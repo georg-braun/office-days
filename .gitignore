@@ -1,0 +1,5 @@
+backend/.idea
+backend/bin
+backend/obj
+backend/.DS_Store
+.DS_Store
