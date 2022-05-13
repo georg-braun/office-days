@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  office-days:
+    image: "velox1992/office-days-backend"
+    #build: .
+    ports:
+      - "8001:80"
+    environment:
+      # necessary for Apple M1. Missing filewatcher.
+      - ASPNETCORE_hostBuilder__reloadConfigOnChange=false
+      - DataFolder="/home/office-days-data/"
+    volumes:
+      - office-days-volume:/home/office-days-data/
+volumes:
+  office-days-volume:
