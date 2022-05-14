@@ -1,3 +1,4 @@
+/*
 import axios from 'axios';
 import { get } from 'svelte/store';
 
@@ -134,3 +135,4 @@ function updateStore(store, newItems, getNewItemFunc, deletedItemIds) {
 		console.log(error);
 	}
 }
+*/

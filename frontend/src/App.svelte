@@ -1,34 +1,17 @@
 <script>
-	import { onMount } from 'svelte';
-	import auth from './auth-service';
-	import { getAllData } from './budget-api-service';	
-	import MoneyMovementsOverview from './components/MoneyMovementsOverview.svelte';
-	import NewMoneyMovement from './components/new-money-movement.svelte';
-	import NewCategory from './components/new-category.svelte';
-	import CategoryOverview from './components/CategoryOverview.svelte';
-
-
-
-
-
-	let { isAuthenticated, user } = auth;
-	
+	//import AddEmployee from '../AddEmployee.svelte';
+	import Overview from './components/Overview.svelte';
 </script>
 
-<main>
+<div class="container" style="padding: 50px 0 100px 0;">
+	<h1>👨🏾‍💼👩🏻‍💼Office days?</h1>
 
-	<div>
-		{#if $isAuthenticated}
-		
+	<Overview />
+	<!--
+	<AddEmployee />
+    -->
 
-			<h1>🧾 Log</h1>
-			<NewMoneyMovement />
-			<MoneyMovementsOverview />
-
-
-			<h1 class="mt-16">📚 Categories</h1>			
-			<CategoryOverview />
-			<NewCategory />
-		{/if}
+	<div style="margin-top: 30px;">
+		<b>A Slack Time Production 🚀</b>
 	</div>
-</main>
+</div>
