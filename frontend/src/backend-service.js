@@ -1,8 +1,11 @@
 import axios from "axios";
 import {employeeStore} from "./store.js";
 
-const server = __api.env.VITE_BACKEND_SERVER;
+console.log("123");
+const server = import.meta.env.VITE_BACKEND_SERVER;
 
+
+console.log(server);
 export async function refreshEmployees(){
     try {
         const response = await axios.get(`${server}/get-all-employees`)        
