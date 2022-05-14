@@ -27,7 +27,6 @@ if (app.Environment.IsDevelopment())
 app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
 
 app.MapGet("/", () =>  "Hello");
 app.MapGet("/get-all-employees", (EmployeeService employeeService) =>  employeeService.GetAll());
