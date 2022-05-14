@@ -1,11 +1,21 @@
 # Office days
 
 A little tool for communicate our office days :)
+- everyone can add/delete people and mark the office/home days (no authentication, no checks, just trust 👮)
+- toggle office/home by clicking the icons
+- weekends are highlighted 😎
+
+# Technical stuff
 
 Svelte Frontend + ASP.NET Backend
 
-# Configure frontend
-- add environment variable `VITE_BACKEND_SERVER` with the address of the backend server.
+## Configure backend
+- add environment variable `DataFolder` to the folder where the data should be stored (storead in a simple json file)
+  - Possibilities: edit `appsettings.json`, use `dotnet user-secrets`, deployment environment variables, ...
+- you can also use a `docker-compose` file to start the backend from the lasted image on docker hub
 
-# Configure backend
-- add environment variable `DataFolder` to the folder where the data should be stored (it is just a simple json file)
+- the backend caches the app data and write them every x minutes to a json file (see `DataFolder` environment variable)
+- 
+## Configure frontend
+- add environment variable `VITE_BACKEND_SERVER` with the address of the backend server.
+- start/deploy svelte project
