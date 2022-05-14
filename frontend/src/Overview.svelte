@@ -3,8 +3,8 @@
   import { employeeStore } from "./store.js";
   //import EmployeeRow from "./EmployeeRow.svelte";
   //import { onMount } from "svelte";
-  import { addDays } from "./dateUtils";
-  import { columnSize } from "./constants";
+  //import { addDays } from "./dateUtils";
+  //import { columnSize } from "./constants";
 
 /*
   const today = new Date();
