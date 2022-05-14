@@ -12,6 +12,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<JsonFilePersistence>();
 builder.Services.AddSingleton<EmployeeService>();
 builder.Services.AddCors();
+builder.Services.AddHostedService<PersistDataService>();
+
 
 var app = builder.Build();
 

@@ -14,16 +14,16 @@ public class EmployeeService
 
     private List<Employee> Employees = new List<Employee>();
 
-    public async Task AddEmployee(string name)
+    public Task AddEmployee(string name)
     {
         Employees.Add(new Employee(){Id = Guid.NewGuid(), Name = name, OfficeDays = new List<DateTime>()});
-        await _jsonFilePersistence.Save(Employees);
+        return Task.CompletedTask;
     }
     
-    public async Task DeleteEmployee(Guid id)
+    public Task DeleteEmployee(Guid id)
     {
         Employees.RemoveAll(_ => _.Id.Equals(id));
-        await _jsonFilePersistence.Save(Employees);
+        return Task.CompletedTask;
     }
 
     public IEnumerable<Employee> GetAll()
@@ -44,5 +44,10 @@ public class EmployeeService
         var employee = Employees.Find(_ => _.Id.Equals(id));
         if (employee is null) return;
         employee.OfficeDays.Remove(date);
+    }
+
+    public async Task Save()
+    {
+        await _jsonFilePersistence.Save(Employees);
     }
 }
