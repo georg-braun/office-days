@@ -1,0 +1,1 @@
+export const columnSize = 60;
