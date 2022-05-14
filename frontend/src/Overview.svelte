@@ -1,5 +1,5 @@
 <script>
-    import { refreshEmployees } from "./backend-service";
+    import { refreshEmployees } from "./backend";
 
 
 
