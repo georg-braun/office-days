@@ -8,8 +8,8 @@ services:
     environment:
       # necessary for Apple M1. Missing filewatcher.
       - ASPNETCORE_hostBuilder__reloadConfigOnChange=false
-      - DataFolder="/home/office-days-data/"
+      - DataFolder=/home/georg/office-days/data/
     volumes:
-      - office-days-volume:/home/office-days-data/
+      - office-days-volume:/home/georg/office-days/data/
 volumes:
   office-days-volume:
