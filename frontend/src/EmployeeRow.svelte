@@ -66,7 +66,7 @@
 
   <div style="display: flex">
     <div
-      style="background-color: {backgroundColor} ; min-width: {columnSize}px; "
+      style="background-color: {backgroundColor} ; min-width: {columnSize}px; display: flex; align-items: center;"
     >
       {employee.name}
     </div>
@@ -76,7 +76,7 @@
         style="background-color: {backgroundColor}; min-width: {columnSize}px; text-align: center;"
       >
         <button
-          style="padding: 2; margin: 0; border: none; background: transparent;"
+          style="padding: 2; margin: 0; border: none; background: transparent; font-size: x-large;"
           on:click={() =>
             updateLocation(
               employee.id,
