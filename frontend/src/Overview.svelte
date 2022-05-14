@@ -6,7 +6,7 @@
   import { addDays } from "./dateUtils";
   import { columnSize } from "./constants";
 
-
+/*
   const today = new Date();
 
   onMount(async () => {
@@ -23,6 +23,7 @@
   function getColor(value) {
     return value % 2 == 0 ? "skyblue" : "white";
   }
+  */
 </script>
 
 <!--
