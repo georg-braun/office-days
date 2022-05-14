@@ -2,5 +2,4 @@
 </script>
 
 <!-- App Bar -->
-
 <slot />

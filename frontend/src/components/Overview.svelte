@@ -9,7 +9,7 @@
 	const today = new Date();
 
 	onMount(async () => {
-		//employeeStore.set([{id: 0, name: "Georg", office_days:[new Date("2022-05-13"), new Date("2022-05-15")]}, {id: 1, name: "Karsten", office_days:[]}])
+	
 		await refreshEmployees();
 	});
 
