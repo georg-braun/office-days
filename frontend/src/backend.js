@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export async function refreshEmployees(){
+    /*
     try {
         const response = await axios.get(`2e32/get-all-employees`)        
         response.data;
@@ -9,4 +10,5 @@ export async function refreshEmployees(){
     } catch (error) {
         console.log(error);
     }
+    */
 }
