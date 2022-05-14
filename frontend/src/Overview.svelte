@@ -1,7 +1,7 @@
 <script>
   import { refreshEmployees } from "./backend-service";
   import { employeeStore } from "./store.js";
-  import EmployeeRow from "./EmployeeRow.svelte";
+  //import EmployeeRow from "./EmployeeRow.svelte";
   import { onMount } from "svelte";
   import { addDays } from "./dateUtils";
   import { columnSize } from "./constants";
@@ -33,12 +33,14 @@
   {/each}
 </div>
 {#each $employeeStore as employee, i}
+<!--
   <EmployeeRow
     {employee}
     index="i"
     today={new Date()}
     backgroundColor={getColor(i)}
   />
+-->
 {/each}
 
 <button class="button block" on:click={refreshEmployees}> 🔃 </button>
