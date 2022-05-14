@@ -1,7 +1,7 @@
 import axios from "axios";
 import {employeeStore} from "./store.js";
 
-const server = __api.env.SVELTE_APP_SERVER;
+const server = __api.env.VITE_BACKEND_SERVER;
 
 export async function refreshEmployees(){
     try {
