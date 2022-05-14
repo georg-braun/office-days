@@ -1,2 +1,19 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+    
+	//import AddEmployee from '../AddEmployee.svelte';
+	import Overview from '../Overview.svelte';
+    
+</script>
+
+<div class="container" style="padding: 50px 0 100px 0;">
+	<h1>👨🏾‍💼👩🏻‍💼Office days?</h1>
+	
+    <Overview />
+    <!--
+	<AddEmployee />
+    -->
+
+	<div style="margin-top: 30px;">
+		<b>A Slack Time Production 🚀</b>
+	</div>
+</div>
