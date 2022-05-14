@@ -1,6 +1,5 @@
 <script>
-
-import {visitOffice, stayHome, deleteEmployee} from "./backend-service"
+  import { visitOffice, stayHome, deleteEmployee } from "./backend-service";
 
   import { columnSize } from "./constants";
 
@@ -16,12 +15,10 @@ import {visitOffice, stayHome, deleteEmployee} from "./backend-service"
     return newDate;
   }
 
-  function getLocation(employee, date) {      
-
+  function getLocation(employee, date) {
     var dayOfWeek = date.getDay();
-    var isWeekend = (dayOfWeek === 6) || (dayOfWeek  === 0); // 6 = Saturday, 0 = Sunday
-    if (isWeekend)
-      return "😎"
+    var isWeekend = dayOfWeek === 6 || dayOfWeek === 0; // 6 = Saturday, 0 = Sunday
+    if (isWeekend) return "😎";
 
     // this could be done better. Gets called for every employee within the timerange and the office days are checked each time.
     if (employee.officeDays == undefined) return homeText;
@@ -33,32 +30,27 @@ import {visitOffice, stayHome, deleteEmployee} from "./backend-service"
   }
 
   function updateLocation(id, date, oldLocation) {
-    
     var dayOfWeek = date.getDay();
-    var isWeekend = (dayOfWeek === 6) || (dayOfWeek  === 0); // 6 = Saturday, 0 = Sunday
-    if (isWeekend)
-      return;
+    var isWeekend = dayOfWeek === 6 || dayOfWeek === 0; // 6 = Saturday, 0 = Sunday
+    if (isWeekend) return;
 
     if (date == undefined) {
       console.log("date is undefined");
       return;
     }
 
+    const dateObj = new Date(date);
 
-    const dateObj=new Date(date);
-
-  
     if (oldLocation == homeText) {
       // -> go to the office => add date
-      console.log("go the office");      
+      console.log("go the office");
       visitOffice(id, dateObj);
     } else {
       // -> work from home => remove date
-      console.log("work from home");      
-      stayHome(id, dateObj)      
-    }  
+      console.log("work from home");
+      stayHome(id, dateObj);
+    }
   }
-
 
   function sameDay(d1, d2) {
     return (
@@ -90,12 +82,18 @@ import {visitOffice, stayHome, deleteEmployee} from "./backend-service"
               employee.id,
               addDays(today, i),
               getLocation(employee, addDays(today, i))
-            )}>
-            <!-- this is a litte bit weird. The employee has to be an argument to detect the change and run when the employee data changes-->
-            {getLocation(employee, addDays(today, i))}</button
+            )}
+        >
+          <!-- this is a litte bit weird. The employee has to be an argument to detect the change and run when the employee data changes-->
+          {getLocation(employee, addDays(today, i))}</button
         >
       </div>
     {/each}
-    <button style="border: none; background: transparent;" on:click="{deleteEmployee(employee.id)}">🗑️</button>
+    <button
+      style="border: none; background: transparent;"
+      on:click={() => {
+        if (confirm("Willst du die Person wirklich löschen?")) deleteEmployee(employee.id);
+      }}>🗑️</button
+    >
   </div>
 </div>
