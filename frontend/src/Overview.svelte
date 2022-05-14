@@ -6,6 +6,7 @@
   import { addDays } from "./dateUtils";
   import { columnSize } from "./constants";
 
+
   const today = new Date();
 
   onMount(async () => {
@@ -24,6 +25,7 @@
   }
 </script>
 
+<!--
 <div style="display: flex; ">
   <div style="min-width: {columnSize}px;" />
   {#each Array(14) as _, i}
@@ -33,15 +35,16 @@
   {/each}
 </div>
 {#each $employeeStore as employee, i}
-<!--
+
   <EmployeeRow
     {employee}
     index="i"
     today={new Date()}
     backgroundColor={getColor(i)}
   />
--->
+
 {/each}
 
 <button class="button block" on:click={refreshEmployees}> 🔃 </button>
 
+-->
