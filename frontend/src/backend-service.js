@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { employeeStore } from './store.js';
 
-const server = 'x'; // import.meta.env.VITE_BACKEND_SERVER;
+const server = import.meta.env.VITE_BACKEND_SERVER;
 
 console.log(server);
 export async function refreshEmployees() {
