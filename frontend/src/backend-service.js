@@ -1,7 +1,8 @@
+/*
 import axios from "axios";
 import {employeeStore} from "./store.js";
 
-console.log("123");
+
 const server = "x"// import.meta.env.VITE_BACKEND_SERVER;
 
 
@@ -58,3 +59,4 @@ export async function deleteEmployee(id){
         console.log(error);
     }
 }
+*/
