@@ -27,7 +27,7 @@ export async function addEmployee(name){
 export async function visitOffice(id, date){
     try {
         const datestring = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
-        console.log(`${id} visits at ${date}`)
+        console.log(`${id} visits the office at ${date}`)
         await axios.post(`${server}/set-at-office?id=${id}&date=${datestring}`, {headers: {'content-type': 'application/json'}})        
         await refreshEmployees();
     } catch (error) {
@@ -38,7 +38,7 @@ export async function visitOffice(id, date){
 export async function stayHome(id, date){
     try {
         const datestring = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
-        console.log(`${id} visits at ${date}`)
+        console.log(`${id} stays at homt ${date}`)
         await axios.post(`${server}/set-at-home?id=${id}&date=${datestring}`, {headers: {'content-type': 'application/json'}})        
         await refreshEmployees();
     } catch (error) {
