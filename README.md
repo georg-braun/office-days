@@ -10,12 +10,12 @@ A little tool for communicate our office days :)
 Svelte Frontend + ASP.NET Backend
 
 ## Configure backend
-- add environment variable `DataFolder` to the folder where the data should be stored (storead in a simple json file)
+- add environment variable `DataFolder` to the folder where the data should be stored (stored in a simple json file)
   - Possibilities: edit `appsettings.json`, use `dotnet user-secrets`, deployment environment variables, ...
 - you can also use a `docker-compose` file to start the backend from the lasted image on docker hub
 
 - the backend caches the app data and write them every x minutes to a json file (see `DataFolder` environment variable)
-- 
+
 ## Configure frontend
 - add environment variable `VITE_BACKEND_SERVER` with the address of the backend server.
 - start/deploy svelte project
