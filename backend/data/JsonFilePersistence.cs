@@ -25,9 +25,18 @@ public class JsonFilePersistence
 
     public async Task Save(IEnumerable<Employee> employees)
     {
-        await using var createStream = File.Create(filePath);
-        await JsonSerializer.SerializeAsync(createStream, employees);
-        await createStream.DisposeAsync();
+        try
+        {
+            Console.WriteLine($"Save file to {filePath}");
+            await using var createStream = File.Create(filePath);
+            await JsonSerializer.SerializeAsync(createStream, employees);
+            await createStream.DisposeAsync();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 
     public IEnumerable<Employee> Load()

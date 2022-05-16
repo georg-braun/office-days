@@ -25,7 +25,7 @@
 </script>
 
 <div style="display: flex; ">
-	<div style="min-width: {columnSize}px;" />
+	<div style="min-width: 140px;" />
 	{#each Array(14) as _, i}
 		<div style="min-width: {columnSize}px; text-align: center;">
 			{addAndFormatDate(today, i)}

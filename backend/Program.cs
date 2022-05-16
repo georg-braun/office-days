@@ -36,5 +36,3 @@ app.MapPost("/set-at-home", (EmployeeService employeeService, Guid id, DateTime 
 app.MapGet("/delete-employee", (EmployeeService employeeService, Guid id) =>  employeeService.DeleteEmployee(id));
 
 app.Run();
-
-// todo: chron job that persists the data every minute
