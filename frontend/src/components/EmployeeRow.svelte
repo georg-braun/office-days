@@ -1,18 +1,21 @@
 <script>
 	import { visitOffice, stayHome, deleteEmployee } from '../backend-service';
 
-	import { columnSize } from '../constants';
+	import { columnSize, todayColor } from '../constants';
+	import { sameDay, addDays } from '../dateUtils';
 
 	export let index;
 	export let employee;
-	export let today;
+	export let timelineStart;
 	export let backgroundColor;
 	let homeText = '🏠';
+	let today = new Date();
 
-	function addDays(date, days) {
-		let newDate = new Date(date);
-		newDate.setDate(newDate.getDate() + days);
-		return newDate;
+	function getBackgroundColor(currentDate) {
+		if (sameDay(today, currentDate)) {
+			return todayColor;
+		}
+		return backgroundColor;
 	}
 
 	function getLocation(employee, date) {
@@ -49,14 +52,6 @@
 			stayHome(id, dateObj);
 		}
 	}
-
-	function sameDay(d1, d2) {
-		return (
-			d1.getFullYear() === d2.getFullYear() &&
-			d1.getMonth() === d2.getMonth() &&
-			d1.getDate() === d2.getDate()
-		);
-	}
 </script>
 
 <div>
@@ -71,19 +66,21 @@
 
 		{#each Array(14) as _, i}
 			<div
-				style="background-color: {backgroundColor}; min-width: {columnSize}px; text-align: center;"
+				style="background-color: {getBackgroundColor(
+					addDays(timelineStart, i)
+				)}; min-width: {columnSize}px; text-align: center;"
 			>
 				<button
 					style="padding: 2; margin: 0; border: none; background: transparent; font-size: x-large;"
 					on:click={() =>
 						updateLocation(
 							employee.id,
-							addDays(today, i),
-							getLocation(employee, addDays(today, i))
+							addDays(timelineStart, i),
+							getLocation(employee, addDays(timelineStart, i))
 						)}
 				>
 					<!-- this is a litte bit weird. The employee has to be an argument to detect the change and run when the employee data changes-->
-					{getLocation(employee, addDays(today, i))}</button
+					{getLocation(employee, addDays(timelineStart, i))}</button
 				>
 			</div>
 		{/each}
