@@ -53,4 +53,4 @@
 	<EmployeeRow {employee} index="i" timelineStart={timelineStart} backgroundColor={getEmployeeRowColor(i)} />
 {/each}
 
-<button class="button block" on:click={refreshEmployees}> 🔃 </button>
+<button class="button block" title="Aktualisieren" on:click={refreshEmployees}> 🔃 </button>
