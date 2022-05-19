@@ -5,6 +5,8 @@ A little tool for communicate our office days :)
 - toggle office/home by clicking the icons
 - weekends are highlighted 😎
 
+![Office days example](example.png)
+
 # Technical stuff
 
 Svelte Frontend + ASP.NET Backend
