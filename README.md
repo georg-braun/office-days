@@ -1,6 +1,6 @@
 # Office days
 
-A little tool for communicate our office days :)
+A little tool to communicate our office days :)
 - everyone can add/delete people and mark the office/home days (no authentication, no checks, just trust 👮)
 - toggle office/home by clicking the icons
 - weekends are highlighted 😎
