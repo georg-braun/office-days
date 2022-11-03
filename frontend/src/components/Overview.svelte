@@ -4,7 +4,8 @@
 	import EmployeeRow from './EmployeeRow.svelte';
 	import { onMount } from 'svelte';
 	import { addDays, sameDay } from '../dateUtils';
-	import { columnSize, todayColor} from '../constants';
+	import { columnSize, todayColor } from '../constants';
+	import { getTodayMarker } from './TodayMarker';
 
 	const timelineStart = getMonday();
 	const today = new Date();
@@ -16,7 +17,7 @@
 	function getMonday() {
 		let d = new Date();
 		var day = d.getDay(),
-			diff = d.getDate() - day + (day == 0 ? -6 : 1); 
+			diff = d.getDate() - day + (day == 0 ? -6 : 1);
 		const monday = new Date(d.setDate(diff));
 		console.log(monday);
 		return monday;
@@ -29,28 +30,42 @@
 	}
 
 	function getEmployeeRowColor(value) {
-
 		return value % 2 == 0 ? 'skyblue' : 'white';
 	}
 
-	function getHeaderColor(currentDate){
-		if (sameDay(today, currentDate)){
-			return todayColor;
-		};
-		return "white";
-	}
 </script>
 
 <div style="display: flex; ">
 	<div style="min-width: 140px;" />
 	{#each Array(14) as _, i}
-		<div style="min-width: {columnSize}px; text-align: center; background: {getHeaderColor(addDays(timelineStart, i))};">
+		<div
+			class="mt-auto"
+			style="min-width: {columnSize}px; text-align: center; vertical-align: bottom;"
+		>
+			{#if sameDay(today, addDays(timelineStart, i))}
+				<div>
+					<img src="pete.png" alt="panda" width="30" />
+				</div>
+			{/if}
+		</div>
+	{/each}
+</div>
+<div style="display: flex; ">
+	<div style="min-width: 140px;" />
+
+	{#each Array(14) as _, i}
+		<div
+			class="mt-auto"
+			style="min-width: {columnSize}px; text-align: center; vertical-align: bottom; {getTodayMarker(
+				addDays(timelineStart, i)
+			)};"
+		>
 			{addAndFormatDate(timelineStart, i)}
 		</div>
 	{/each}
 </div>
 {#each $employeeStore as employee, i}
-	<EmployeeRow {employee} index="i" timelineStart={timelineStart} backgroundColor={getEmployeeRowColor(i)} />
+	<EmployeeRow {employee} index="i" {timelineStart} backgroundColor={getEmployeeRowColor(i)} />
 {/each}
 
 <button class="button block" title="Aktualisieren" on:click={refreshEmployees}> 🔃 </button>

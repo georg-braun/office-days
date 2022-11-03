@@ -3,7 +3,7 @@
 	import Overview from './components/Overview.svelte';
 </script>
 
-<div class="container" style="padding: 50px 0 100px 0;">
+<div class="container" style="padding: 20px 0 20px 0;">
 	<h1>👨🏾‍💼 👩🏻‍💼 🐶 🐱 🦍 🐼 🦄 Office days?</h1>
 
 	<Overview />	
