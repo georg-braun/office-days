@@ -6,6 +6,8 @@
 	import { addDays, sameDay } from '../dateUtils';
 	import { columnSize, todayColor} from '../constants';
 
+	
+
 	const timelineStart = getMonday();
 	const today = new Date();
 
@@ -42,6 +44,9 @@
 </script>
 
 <div style="display: flex; ">
+	<div class="w-20 h-10">
+		<img src="pete.png" alt="panda" />
+	</div>
 	<div style="min-width: 140px;" />
 	{#each Array(14) as _, i}
 		<div style="min-width: {columnSize}px; text-align: center; background: {getHeaderColor(addDays(timelineStart, i))};">
