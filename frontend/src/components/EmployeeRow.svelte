@@ -3,20 +3,16 @@
 
 	import { columnSize, todayColor } from '../constants';
 	import { sameDay, addDays } from '../dateUtils';
+	import { getTodayMarker } from './TodayMarker';
 
 	export let index;
 	export let employee;
 	export let timelineStart;
 	export let backgroundColor;
 	let homeText = '🏠';
-	let today = new Date();
 
-	function getBackgroundColor(currentDate) {
-		if (sameDay(today, currentDate)) {
-			return todayColor;
-		}
-		return backgroundColor;
-	}
+
+
 
 	function getLocation(employee, date) {
 		var dayOfWeek = date.getDay();
@@ -66,7 +62,8 @@
 
 		{#each Array(14) as _, i}
 			<div
-				style="background-color: {getBackgroundColor(
+				
+				style="{getTodayMarker(
 					addDays(timelineStart, i)
 				)}; min-width: {columnSize}px; text-align: center;"
 			>
