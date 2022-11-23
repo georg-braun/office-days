@@ -29,7 +29,7 @@ app.UseHttpsRedirection();
 
 
 
-app.MapGet("/", () =>  "Hello");
+app.MapGet("/", () =>  "Hello :)");
 app.MapGet("/get-all-employees", (EmployeeService employeeService) =>  employeeService.GetAll());
 app.MapPost("/add-employee", (EmployeeService employeeService, string name) =>  employeeService.AddEmployee(name));
 app.MapPost("/set-at-office", (EmployeeService employeeService, Guid id, DateTime date) =>  employeeService.SetAtOffice(id, date));
