@@ -7,22 +7,13 @@
 	import { columnSize, todayColor } from '../constants';
 	import { getTodayMarker } from './TodayMarker';
 
-	const timelineStart = getMonday();
 	const today = new Date();
 
 	onMount(async () => {
 		await refreshEmployees();
 	});
 
-	function getMonday() {
-		let d = new Date();
-		var day = d.getDay(),
-			diff = d.getDate() - day + (day == 0 ? -6 : 1);
-		const monday = new Date(d.setDate(diff));
-		console.log(monday);
-		return monday;
-	}
-
+	export let timelineStart;
 	export function addAndFormatDate(date, days) {
 		const currentDate = addDays(date, days);
 
@@ -32,7 +23,6 @@
 	function getEmployeeRowColor(value) {
 		return value % 2 == 0 ? 'skyblue' : 'white';
 	}
-
 </script>
 
 <div style="display: flex; ">

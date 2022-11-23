@@ -4,11 +4,12 @@ namespace office_days.data;
 
 public class EmployeeService
 {
-    private readonly JsonFilePersistence _jsonFilePersistence;
+    private readonly JsonFilePersistence<Employee> _jsonFilePersistence;
 
-    public EmployeeService(JsonFilePersistence jsonFilePersistence)
+    public EmployeeService(IConfiguration configuration)
     {
-        _jsonFilePersistence = jsonFilePersistence;
+        
+        _jsonFilePersistence = new JsonFilePersistence<Employee>(configuration, "employees.json");
         Employees = _jsonFilePersistence.Load().ToList();
     }
 

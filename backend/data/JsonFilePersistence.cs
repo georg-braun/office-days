@@ -3,17 +3,19 @@ using office_days_api.model;
 
 namespace office_days.data;
 
-public class JsonFilePersistence
-{
-    private string fileName = "employees.json";
-    private string dataFolder;
-    private string filePath;
 
-    public JsonFilePersistence(IConfiguration configuration)
+
+public class JsonFilePersistence<T>
+{
+    private string dataFolder;
+    private readonly string filePath;
+
+  
+    public JsonFilePersistence(IConfiguration configuration, string fileName)
     {
         dataFolder = configuration["DataFolder"].Replace("\"", "");
         Console.WriteLine($"Data-Folder: ${dataFolder}");
-        filePath = $"{dataFolder}employees.json";
+        filePath = $"{dataFolder}{fileName}";
         Console.Write($"FilePath: {filePath}");
         if (!File.Exists(filePath))
         {
@@ -23,7 +25,7 @@ public class JsonFilePersistence
         }
     }
 
-    public async Task Save(IEnumerable<Employee> employees)
+    public async Task Save(IEnumerable<T> employees)
     {
         try
         {
@@ -39,12 +41,12 @@ public class JsonFilePersistence
         }
     }
 
-    public IEnumerable<Employee> Load()
+    public IEnumerable<T> Load()
     {
         var content = File.ReadAllText(filePath);
         if (string.IsNullOrEmpty(content))
-            return Array.Empty<Employee>();
-        var result = JsonSerializer.Deserialize<Employee[]>(content);
-        return result ?? Array.Empty<Employee>();
+            return Array.Empty<T>();
+        var result = JsonSerializer.Deserialize<T[]>(content);
+        return result ?? Array.Empty<T>();
     }
 }
