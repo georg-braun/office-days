@@ -62,7 +62,6 @@
 
 		{#each Array(14) as _, i}
 			<div
-				
 				style="{getTodayMarker(
 					addDays(timelineStart, i)
 				)}; min-width: {columnSize}px; text-align: center;"

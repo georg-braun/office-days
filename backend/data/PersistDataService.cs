@@ -4,11 +4,13 @@ namespace office_days.data;
 
 public class PersistDataService : IHostedService, IDisposable
 {
-    public EmployeeService EmployeeService { get; }
+    private readonly RoomService _roomService;
+    private readonly EmployeeService _employeeService;
 
-    public PersistDataService(EmployeeService employeeService)
+    public PersistDataService(EmployeeService employeeService, RoomService roomService)
     {
-        EmployeeService = employeeService;
+        _roomService = roomService;
+        _employeeService = employeeService;
         Console.WriteLine("Starting PersistDataService background task.");
     }
 
@@ -16,7 +18,7 @@ public class PersistDataService : IHostedService, IDisposable
 
     public Task StartAsync(CancellationToken cancellationToken)
     {
-        _timer = new Timer(DoWork, null, TimeSpan.Zero, TimeSpan.FromMinutes(5));
+        _timer = new Timer(DoWork, null, TimeSpan.Zero, TimeSpan.FromMinutes(1));
         return Task.CompletedTask;
     }
 
@@ -28,7 +30,8 @@ public class PersistDataService : IHostedService, IDisposable
 
     private async void DoWork(object state)
     {
-        await EmployeeService.Save();
+        await _employeeService.Save();
+        await _roomService.Save();
     }
     
     public void Dispose()

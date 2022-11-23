@@ -13,5 +13,5 @@
 	}
 </script>
 
-<input type="text" placeholder="Name" bind:value={name} />
+<input type="text" placeholder="Mitarbeiter" bind:value={name} />
 <button class="button block" on:click={addNewEmployee}> Hinzufügen </button>

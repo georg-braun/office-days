@@ -9,8 +9,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<JsonFilePersistence>();
 builder.Services.AddSingleton<EmployeeService>();
+builder.Services.AddSingleton<RoomService>();
 builder.Services.AddCors();
 builder.Services.AddHostedService<PersistDataService>();
 
@@ -28,6 +28,7 @@ app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 app.UseHttpsRedirection();
 
 
+
 app.MapGet("/", () =>  "Hello");
 app.MapGet("/get-all-employees", (EmployeeService employeeService) =>  employeeService.GetAll());
 app.MapPost("/add-employee", (EmployeeService employeeService, string name) =>  employeeService.AddEmployee(name));
@@ -35,4 +36,13 @@ app.MapPost("/set-at-office", (EmployeeService employeeService, Guid id, DateTim
 app.MapPost("/set-at-home", (EmployeeService employeeService, Guid id, DateTime date) =>  employeeService.SetAtHome(id, date));
 app.MapGet("/delete-employee", (EmployeeService employeeService, Guid id) =>  employeeService.DeleteEmployee(id));
 
+// Rooms
+app.MapGet("/room-svg", () => Results.Content(File.ReadAllText("assets/room.svg"), "image/svg+xml; charset=utf-8"));
+app.MapGet("/room-utilization", (RoomService roomService) => roomService.GetAll());
+app.MapGet("/delete-room", (RoomService roomService, Guid roomId) =>  roomService.DeleteRoom(roomId));
+app.MapGet("/delete-table", (RoomService roomService, Guid roomId, Guid tableId) =>  roomService.DeleteTable(roomId, tableId));
+
+app.MapPost("/add-room", (RoomService roomService, string name) => roomService.AddRoom(name));
+app.MapPost("/add-table", (RoomService roomService, Guid roomId, string name) => roomService.AddTable(roomId, name));
+app.MapPost("/toggle-reservation", (RoomService roomService, Guid roomId, Guid tableId, DateTime date, string person) => roomService.ToggleReservation(roomId, tableId, date, person));
 app.Run();
