@@ -14,9 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="assets\room.svg">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
+      <Folder Include="assets" />
     </ItemGroup>
 
 </Project>

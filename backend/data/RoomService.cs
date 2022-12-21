@@ -68,4 +68,10 @@ public class RoomService
     {
         await _jsonFilePersistence.Save(Rooms);
     }
+
+    public void AddImageToRoom(Guid roomId, string imageBase64)
+    {
+        var room = Rooms.Find(_ => _.Id.Equals(roomId));
+        room.Image = imageBase64;
+    }
 }

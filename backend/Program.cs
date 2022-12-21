@@ -37,7 +37,6 @@ app.MapPost("/set-at-home", (EmployeeService employeeService, Guid id, DateTime 
 app.MapGet("/delete-employee", (EmployeeService employeeService, Guid id) =>  employeeService.DeleteEmployee(id));
 
 // Rooms
-app.MapGet("/room-svg", () => Results.Content(File.ReadAllText("assets/room.svg"), "image/svg+xml; charset=utf-8"));
 app.MapGet("/room-utilization", (RoomService roomService) => roomService.GetAll());
 app.MapGet("/delete-room", (RoomService roomService, Guid roomId) =>  roomService.DeleteRoom(roomId));
 app.MapGet("/delete-table", (RoomService roomService, Guid roomId, Guid tableId) =>  roomService.DeleteTable(roomId, tableId));
@@ -45,4 +44,22 @@ app.MapGet("/delete-table", (RoomService roomService, Guid roomId, Guid tableId)
 app.MapPost("/add-room", (RoomService roomService, string name) => roomService.AddRoom(name));
 app.MapPost("/add-table", (RoomService roomService, Guid roomId, string name) => roomService.AddTable(roomId, name));
 app.MapPost("/toggle-reservation", (RoomService roomService, Guid roomId, Guid tableId, DateTime date, string person) => roomService.ToggleReservation(roomId, tableId, date, person));
+
+
+app.MapPost("/update-room-image", async (Guid roomId, [FromBody] string image, RoomService roomService) =>
+{
+    // image should be base64 encoded.
+    const int maxFileSizeInBytes = 300 * 1024;
+
+    if (image.Length > maxFileSizeInBytes)
+        return Results.Problem($"The image size is to big. Max allowed {maxFileSizeInBytes} Bytes.");
+
+    roomService.AddImageToRoom(roomId, image);
+
+    Console.WriteLine($"Image changed for room {roomId}");
+
+    return Results.Ok();
+
+});
+
 app.Run();
