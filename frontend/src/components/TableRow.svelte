@@ -81,6 +81,6 @@
 		width: 50px;
 		text-overflow: ellipsis;
 		white-space: nowrap;
-		overflow: scroll;
+		overflow: hidden;
 	}
 </style>
