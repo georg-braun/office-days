@@ -9,6 +9,7 @@
 
 	const availableText = '🪑';
 	const reservedText = '🔒';
+	const weekEndText = '💺';
 	export let table;
 	export let roomId;
 
@@ -18,7 +19,13 @@
 		console.log(table)
 		if (table.reservations == undefined) return availableText;
 		const isReserved = table.reservations.find((_) => sameDay(new Date(_.date), date));
+
+		var dayOfWeek = date.getDay();
+		var isWeekend = dayOfWeek === 6 || dayOfWeek === 0; // 6 = Saturday, 0 = Sunday
+		if (isWeekend) return weekEndText;
+
 		if (isReserved == undefined) return availableText;
+
 		return reservedText;
 	}
 
