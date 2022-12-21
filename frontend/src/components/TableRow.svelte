@@ -73,11 +73,12 @@
 </div>
 
 <style>
-	.employee-name {
+	.employee-name {	
 		padding: 0px 3px;
 		margin-bottom: 5px;
+		text-align: center;
 		font-size: x-small;
-		max-width: 80px;
+		width: 50px;
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		overflow: scroll;

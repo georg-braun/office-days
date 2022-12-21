@@ -4,17 +4,15 @@
 	import Overview from './components/Overview.svelte';
 	import RoomOverview from './components/RoomOverview.svelte';
 	import { employeeNameStore } from './store';
-	import { get} from 'svelte/store';
+	import { get } from 'svelte/store';
 	import { onMount } from 'svelte';
 	export let employeeName;
 
-
-	const localStorageEmployeeNameKey = "employeeName"
+	const localStorageEmployeeNameKey = 'employeeName';
 	onMount(() => {
-		employeeName = localStorage.getItem(localStorageEmployeeNameKey)
+		employeeName = localStorage.getItem(localStorageEmployeeNameKey);
 		employeeNameStore.set(employeeName);
-	})
-
+	});
 
 	const timelineStart = getMonday();
 
@@ -31,22 +29,26 @@
 <div class="container" style="padding: 20px 0 20px 0;">
 	<h1>👨🏾‍💼 👩🏻‍💼 🐶 🐱 🦍 🐼 🦄 Office days?</h1>
 
-	Name: <input bind:value={employeeName} on:input={(e) => {
-		localStorage.setItem(localStorageEmployeeNameKey, employeeName);
-		employeeNameStore.set(employeeName);
-	}}>
+	<div class="enter-name">
+		🎅 Name:
+		<input
+			bind:value={employeeName}
+			on:input={(e) => {
+				localStorage.setItem(localStorageEmployeeNameKey, employeeName);
+				employeeNameStore.set(employeeName);
+			}}
+		/>
+	</div>
 
 	<Overview {timelineStart} />
-	<div class="add-employee">
+	<!-- 	<div class="add-employee">
 		<AddEmployee />
-	</div>
+	</div> -->
 
 	<RoomOverview {timelineStart} />
 	<div class="add-room">
 		<AddRoom />
 	</div>
-
-
 
 	<div style="margin-top: 30px;">
 		<b>A Slack Time Production 🚀</b>
@@ -54,10 +56,10 @@
 </div>
 
 <style>
-		.add-employee{
-		margin-top: 10px;
+	.enter-name{
+		margin-bottom: 15px;
 	}
-	.add-room{
-		margin-top: 10px;
+	.add-room {
+		margin-top: 30px;
 	}
 </style>

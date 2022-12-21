@@ -54,8 +54,9 @@
 		</div>
 	{/each}
 </div>
-{#each $employeeStore as employee, i}
+<!-- {#each $employeeStore as employee, i}
 	<EmployeeRow {employee} index="i" {timelineStart} backgroundColor={getEmployeeRowColor(i)} />
 {/each}
-
-<button class="button block" title="Aktualisieren" on:click={refreshEmployees}> 🔃 </button>
+ -->
+<!-- <button class="button block" title="Aktualisieren" on:click={refreshEmployees}> 🔃 </button>
+ -->
