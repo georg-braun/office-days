@@ -27,12 +27,14 @@
 </script>
 
 <div class="container" style="padding: 20px 0 20px 0;">
-	<h1>👨🏾‍💼 👩🏻‍💼 🐶 🐱 🦍 🐼 🦄 Office days?</h1>
+	<h1>👨🏾‍💼 👩🏻‍💼 🐶 🐱 🦍 🐼 🎅 🤶 🦄 🎁 Office days 🎄</h1>
 
 	<div class="enter-name">
-		🎅 Name:
+		Name:
 		<input
+			class="name-input"
 			bind:value={employeeName}
+			placeholder="Your name :>"
 			on:input={(e) => {
 				localStorage.setItem(localStorageEmployeeNameKey, employeeName);
 				employeeNameStore.set(employeeName);
@@ -56,6 +58,11 @@
 </div>
 
 <style>
+	.name-input{
+		border: none;
+		text-decoration: underline;
+
+	}
 	.enter-name{
 		margin-bottom: 15px;
 	}
