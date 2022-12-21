@@ -1,5 +1,5 @@
 <script>
-	import { deleteRoom, uploadImage } from '../backend-service';
+	import { deleteRoom, setRoomImage } from '../backend-service';
 	import AddTable from './AddTable.svelte';
 	import TableRow from './TableRow.svelte';
 
@@ -15,7 +15,7 @@
 
 		reader.onloadend = (e) => {
 			const imageBase64 = e.target.result;
-			uploadImage(room.id, imageBase64);
+			setRoomImage(room.id, imageBase64);
 		};
 	};
 </script>
@@ -60,7 +60,9 @@
 	</div>
 	<div>
 		{#each room.tables as table}
+		<div class="table-row">
 			<TableRow {table} roomId={room.id} {timelineStart} />
+		</div>
 		{/each}
 	</div>
 	<div class="add-table">
@@ -95,5 +97,8 @@
 
 	.add-table{
 		margin-top: 5px;
+	}
+
+	.table-row{
 	}
 </style>

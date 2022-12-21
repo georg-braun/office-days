@@ -57,10 +57,13 @@ public class RoomService
         var table = room.Tables.Find(_ => _.Id.Equals(tableId));
         if (table is null) return;
 
-        if (table.ReservedDates.Contains(date))
-            table.ReservedDates.Remove(date);
+        table.Reservations ??= new List<Reservation>();
+        
+        var existingReservation = table.Reservations.Find(_ => _.Date.Equals(date));
+        if (existingReservation is not null)
+            table.Reservations.Remove(existingReservation);
         else
-            table.ReservedDates.Add((date));
+            table.Reservations.Add(new Reservation {Date = date, Who = person});
     }
   
 

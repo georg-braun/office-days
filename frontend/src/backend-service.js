@@ -39,7 +39,7 @@ export async function addEmployee(name) {
 }
 
 
-export async function uploadImage(roomId, image) {
+export async function setRoomImage(roomId, image) {
 	try {
 
 		console.log("Upload image")
@@ -144,11 +144,11 @@ export async function deleteTable(roomId, tableId) {
 }
 
 
-export async function bookTable(roomId, tableId, date, person) {
+export async function toggleReservation(roomId, tableId, date, employeeName) {
 	try {
 		const datestring = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
-		console.log(`${person} reserve a table at ${date}`);
-		await axios.post(`${server}/toggle-reservation?roomId=${roomId}&tableId=${tableId}&date=${datestring}&person=${person}`, {
+		console.log(`${employeeName} reserve a table at ${date}`);
+		await axios.post(`${server}/toggle-reservation?roomId=${roomId}&tableId=${tableId}&date=${datestring}&person=${employeeName}`, {
 			headers: { 'content-type': 'application/json' }
 		});
 		await refreshRooms();

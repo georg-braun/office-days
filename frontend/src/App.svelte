@@ -3,6 +3,17 @@
 	import AddRoom from './components/AddRoom.svelte';
 	import Overview from './components/Overview.svelte';
 	import RoomOverview from './components/RoomOverview.svelte';
+	import { employeeNameStore } from './store';
+	import { get} from 'svelte/store';
+	import { onMount } from 'svelte';
+	export let employeeName;
+
+
+	const localStorageEmployeeNameKey = "employeeName"
+	onMount(() => {
+		employeeName = localStorage.getItem(localStorageEmployeeNameKey)
+		employeeNameStore.set(employeeName);
+	})
 
 
 	const timelineStart = getMonday();
@@ -19,6 +30,11 @@
 
 <div class="container" style="padding: 20px 0 20px 0;">
 	<h1>👨🏾‍💼 👩🏻‍💼 🐶 🐱 🦍 🐼 🦄 Office days?</h1>
+
+	Name: <input bind:value={employeeName} on:input={(e) => {
+		localStorage.setItem(localStorageEmployeeNameKey, employeeName);
+		employeeNameStore.set(employeeName);
+	}}>
 
 	<Overview {timelineStart} />
 	<div class="add-employee">
