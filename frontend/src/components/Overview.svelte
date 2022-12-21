@@ -6,6 +6,7 @@
 	import { addDays, sameDay } from '../dateUtils';
 	import { columnSize, todayColor } from '../constants';
 	import { getTodayMarker } from './TodayMarker';
+	import bambooSvg from "../../static/bamboo.svg"
 
 	const today = new Date();
 
@@ -36,6 +37,8 @@
 				<div>
 					<img src="pete.png" alt="panda" width="30" />
 				</div>
+			{:else}
+				<img width=60 src={bambooSvg} />
 			{/if}
 		</div>
 	{/each}
