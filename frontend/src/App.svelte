@@ -1,10 +1,9 @@
 <script>
-	import { getRoomPlan } from './backend-service';
 	import AddEmployee from './components/AddEmployee.svelte';
 	import AddRoom from './components/AddRoom.svelte';
 	import Overview from './components/Overview.svelte';
 	import RoomOverview from './components/RoomOverview.svelte';
-	import RoomPlan from './components/RoomPlan.svelte';
+
 
 	const timelineStart = getMonday();
 
@@ -22,21 +21,27 @@
 	<h1>👨🏾‍💼 👩🏻‍💼 🐶 🐱 🦍 🐼 🦄 Office days?</h1>
 
 	<Overview {timelineStart} />
+	<div class="add-employee">
+		<AddEmployee />
+	</div>
 
 	<RoomOverview {timelineStart} />
-
-	<div>Raumplan</div>
-	<RoomPlan />
-
-	<div>
+	<div class="add-room">
 		<AddRoom />
 	</div>
 
-	<div>
-		<AddEmployee />
-	</div>
+
 
 	<div style="margin-top: 30px;">
 		<b>A Slack Time Production 🚀</b>
 	</div>
 </div>
+
+<style>
+		.add-employee{
+		margin-top: 10px;
+	}
+	.add-room{
+		margin-top: 10px;
+	}
+</style>

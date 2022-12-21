@@ -15,6 +15,7 @@ export async function refreshRooms() {
 	}
 }
 
+
 export async function refreshEmployees() {
 	try {
 		const response = await axios.get(`${server}/get-all-employees`);
@@ -32,6 +33,25 @@ export async function addEmployee(name) {
 			headers: { 'content-type': 'application/json' }
 		});
 		await refreshEmployees();
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+
+export async function uploadImage(roomId, image) {
+	try {
+
+		console.log("Upload image")
+		const data = JSON.stringify(image);
+		await axios.post(`${server}/update-room-image?roomId=${roomId}`, data, {
+			headers: {
+				// Overwrite Axios's automatically set Content-Type
+				'Content-Type': 'application/json'
+			}
+		}
+		);
+
 	} catch (error) {
 		console.log(error);
 	}
@@ -123,15 +143,6 @@ export async function deleteTable(roomId, tableId) {
 	}
 }
 
-export async function getRoomPlan(){
-	try {
-		const response = await axios.get(`${server}/room-svg`);	
-		return response.data;
-		
-	} catch (error) {
-		console.log(error);
-	}
-}
 
 export async function bookTable(roomId, tableId, date, person) {
 	try {
