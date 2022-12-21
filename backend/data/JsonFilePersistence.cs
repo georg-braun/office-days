@@ -29,7 +29,7 @@ public class JsonFilePersistence<T>
     {
         try
         {
-            Console.WriteLine($"Save file to {filePath}");
+            Console.WriteLine($"{DateTime.Now.ToString()}: Save file to {filePath}");
             await using var createStream = File.Create(filePath);
             await JsonSerializer.SerializeAsync(createStream, employees);
             await createStream.DisposeAsync();
